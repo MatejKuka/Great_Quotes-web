@@ -1,0 +1,31 @@
+.quoteClass {
+    margin: 1rem auto;
+    border-radius: 1.2rem;
+    background-color: #939F5C;
+    width: 40%;
+    list-style: none;
+    height: 100%;
+    box-shadow: #BBCE8A 3px 4px;
+    cursor: pointer;
+}
+
+.quoteClass blockquote {
+    color: azure;
+    font-size: 2.5vw;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin: 5%;
+}
+
+.quoteClass p {
+    font-size: 2vw;
+    margin-left: 45%;
+    font-weight: bolder;
+    margin-right: 5%;
+    color: darkslategrey;
+}
+
+.quoteClass a{
+    text-decoration: none;
+}

@@ -1,0 +1,22 @@
+.quoteListClass {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-inline-start: 0;
+}
+
+.buttonSortClass {
+    margin: 1rem;
+    display: flex;
+}
+
+.buttonSortClass button{
+    background-color: #D16014;
+    margin: auto;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    font-weight: 500;
+}
