@@ -4,9 +4,11 @@ import {useSelector} from 'react-redux';
 import {INITIAL_DATA} from "../data/DummyData";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import Quote from "../models/quote";
+
 type Params = {
     id: string
 }
+
 const QuoteDetail = () => {
     const params = useParams<Params>();
 
@@ -30,5 +32,6 @@ const QuoteDetail = () => {
 
 
 }
+//TODO Change the whole logic of Reducer in order to set all quotes globally
 
 export default QuoteDetail;
