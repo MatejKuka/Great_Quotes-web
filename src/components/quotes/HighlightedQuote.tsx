@@ -1,8 +1,11 @@
 import React from 'react';
 
 import "./HighlightedQuote.css";
+import Quote from "../../models/quote";
 
-const HighlightedQuote = (props) => {
+
+
+const HighlightedQuote: React.FC<{quote: Quote}> = (props) => {
     const quote = props.quote;
 
     return (
@@ -13,4 +16,4 @@ const HighlightedQuote = (props) => {
     )
 }
 
-export default HighlightedQuote;
+export default React.memo(HighlightedQuote);

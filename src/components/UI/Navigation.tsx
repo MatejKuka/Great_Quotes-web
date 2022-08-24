@@ -1,21 +1,21 @@
 import React from 'react';
-import classes from "./Navigation.module.css";
+import "./Navigation.css";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
 
     return(
-        <header className={classes.header}>
-            <div className={classes.logo}>Great Quotes</div>
-            <nav className={classes.nav}>
+        <header className={"header"}>
+            <div className={"logo"}>Great Quotes</div>
+            <nav className={"nav"}>
                 <ul>
                     <li>
-                        <NavLink to='/quotes' className={(navData) => navData.isActive ? classes.active : ""}>
+                        <NavLink to='/quotes' className={(navData) => navData.isActive ? "active" : ""}>
                             All Quotes
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/new-quote' className={(navData) => navData.isActive ? classes.active : ""}>
+                        <NavLink to='/new-quote' className={(navData) => navData.isActive ? "active" : ""}>
                             New Quote
                         </NavLink>
                     </li>

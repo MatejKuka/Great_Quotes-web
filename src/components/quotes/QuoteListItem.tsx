@@ -3,9 +3,7 @@ import {Link} from "react-router-dom";
 
 import "./QuoteListItem.css";
 
-const QuoteListItem = (props) => {
-
-
+const QuoteListItem: React.FC<{id: number, text: string, author: string}> = (props) => {
 
     return (
         <li className="quoteClass" >
@@ -17,4 +15,4 @@ const QuoteListItem = (props) => {
     )
 }
 
-export default QuoteListItem;
+export default React.memo(QuoteListItem);
