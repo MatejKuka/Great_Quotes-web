@@ -1,55 +1,45 @@
-import React, {Fragment, useState, useEffect, useCallback} from 'react';
-import {useSelector} from 'react-redux';
+import React, {Fragment, useEffect, useContext} from 'react';
 import Quote from "../../models/quote";
 
-import "./QuoteList.css"
+import "../../styles/QuoteList.css"
 
 import {useLocation, useNavigate} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
 import QuoteListItem from "./QuoteListItem";
-import {sortActions} from "../../store/reducers/sortingSlice";
-import useFetchAPI from "../../hooks/useFetchAPI";
-
+import QuoteContext from "../context/quote-context";
 
 let isAscending: boolean | null = null;
 const URL_FOR_SORTING: string = "/quotes?sort=";
 
-
 const QuoteList = () => {
-    const {data, isLoading, error} = useFetchAPI();
+    const {logInConsole, items, sortAscending, sortByAuthor, sortDescending, isLoading, error} = useContext(QuoteContext);
 
-    //TODO solve this TypeScript problem
-    // @ts-ignore
-    const sortedQuotes: Quote[] = useSelector((state) => state.sort.items);
-
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const queryParams = new URLSearchParams(useLocation().search);
 
     useEffect(() => {
-        if (data) {
-            console.log(data);
-            dispatch(sortActions.populateItems(data));
+        if (items) {
+            console.log(items);
 
             if (queryParams.get("sort") === "asc" || !queryParams.get("sort")) {
-                dispatch(sortActions.sortAscending());
+                sortAscending();
             }
             if (queryParams.get("sort") === "desc") {
-                dispatch(sortActions.sortDescending());
+                sortDescending();
             }
             if (queryParams.get("sort") === "auth") {
-                dispatch(sortActions.sortByAuthor());
+                logInConsole();
+                sortDescending();
             }
         }
-    }, [data]);
+    }, [items]);
 
 
     const changeSortingTextHandler = () => {
         if (isAscending) {
-            dispatch(sortActions.sortAscending());
+            sortAscending();
         } else {
-            dispatch(sortActions.sortDescending());
+            sortDescending();
         }
         isAscending = !isAscending;
         navigate(URL_FOR_SORTING + (isAscending ? "desc" : "asc"));
@@ -57,7 +47,7 @@ const QuoteList = () => {
     }
 
     const changeSortingAuthorHandler = () => {
-        dispatch(sortActions.sortByAuthor());
+        sortByAuthor();
         navigate(URL_FOR_SORTING + "auth");
         isAscending = false;
 
@@ -70,7 +60,8 @@ const QuoteList = () => {
                 <button onClick={changeSortingAuthorHandler}>Sort by Author</button>
             </div>
             <ul className="quoteListClass">
-                {sortedQuotes && sortedQuotes.map(item =>
+                {isLoading && <p>Loading...</p>}
+                {items && items.map((item: Quote) =>
                     (<QuoteListItem
                         key={item.id}
                         id={item.id}

@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
-import {Provider} from "react-redux";
-import store from "./store/store";
+import {QuoteContextProvider} from "./components/context/quote-context";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <Provider store={store}>
-            <App/>
-        </Provider>
+        <QuoteContextProvider>
+                <App/>
+        </QuoteContextProvider>
     </BrowserRouter>
 );
 

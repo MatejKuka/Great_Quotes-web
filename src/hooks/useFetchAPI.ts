@@ -5,8 +5,8 @@ const URL_DATABASE: string = "https://react-project-quotes-default-rtdb.europe-w
 
 const useFetchAPI = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<Error>();
-    const [data, setData] = useState<Quote[]>();
+    const [error, setError] = useState<Error | undefined>();
+    const [data, setData] = useState<Quote[] | null >();
 
 
     const fetchAPI = async () => {

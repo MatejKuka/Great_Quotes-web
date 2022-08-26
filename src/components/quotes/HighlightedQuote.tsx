@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./HighlightedQuote.css";
+import "../../styles/HighlightedQuote.css";
 import Quote from "../../models/quote";
 
 
@@ -17,3 +17,4 @@ const HighlightedQuote: React.FC<{quote: Quote}> = (props) => {
 }
 
 export default React.memo(HighlightedQuote);
+

@@ -1,37 +1,38 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import {INITIAL_DATA} from "../data/DummyData";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import Quote from "../models/quote";
+import QuoteContext from "../components/context/quote-context";
 
 type Params = {
-    id: string
+    quoteId: string
 }
 
 const QuoteDetail = () => {
     const params = useParams<Params>();
 
-    // @ts-ignore
-    const quotes: Quote[] = useSelector((state) => state.sort.items);
-    console.log(quotes);
-    console.log("gsgsdfg");
-    const quote: Quote | undefined = INITIAL_DATA.find((quote) => quote.id === parseInt(params.id!));
+    const contextQuotes = useContext(QuoteContext)
+    const quotes: Quote[] | null = contextQuotes.items;
+
+    const quote: Quote | undefined = quotes?.find((quote) => quote.id === Number(params.quoteId));
 
     if (!quote) {
-        return <p>No quote found!</p>;
+        return <p style={{fontSize:"3rem",textAlign:"center"}}>No quote found!</p>;
     }
 
     return (
         <HighlightedQuote
             quote={quote}
         />
-
-
 )
-
 
 }
 //TODO Change the whole logic of Reducer in order to set all quotes globally
 
 export default QuoteDetail;
+
+/*
+const quotes: Quote[] = useSelector((state: RootState) => state.sortingItems.items);
+console.log(quotes);
+const quote: Quote | undefined = quotes.find((quote) => quote.id === Number(params.quoteId));
+ */

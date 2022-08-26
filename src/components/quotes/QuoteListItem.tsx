@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import "./QuoteListItem.css";
+import "../../styles/QuoteListItem.css";
 
 const QuoteListItem: React.FC<{id: number, text: string, author: string}> = (props) => {
 
