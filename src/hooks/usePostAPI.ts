@@ -31,7 +31,7 @@ const usePostAPI = () => {
             }
         } catch (error: Error | any) {
             setError(error.message);
-            //setData(null);
+            setData(null);
         }
         setIsLoading(false);
         return quoteNew;
