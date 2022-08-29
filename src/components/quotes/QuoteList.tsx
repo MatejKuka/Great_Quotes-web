@@ -1,8 +1,6 @@
 import React, {Fragment, useEffect, useContext} from 'react';
 import Quote from "../../models/quote";
-
 import "../../styles/QuoteList.css"
-
 import {useLocation, useNavigate} from 'react-router-dom';
 import QuoteListItem from "./QuoteListItem";
 import QuoteContext from "../context/quote-context";
@@ -83,9 +81,7 @@ const QuoteList = () => {
                 {items && items.map((item: Quote) =>
                     (<QuoteListItem
                         key={item.id}
-                        id={item.id}
-                        text={item.text}
-                        author={item.author}
+                        quoteItem={item}
                     />))}
             </ul>
         </Fragment>

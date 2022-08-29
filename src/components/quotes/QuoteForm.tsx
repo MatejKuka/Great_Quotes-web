@@ -3,6 +3,7 @@ import Card from "../Layout/Card";
 import LoadingSpinner from '../UI/LoadingSpinner';
 import usePostAPI from "../../hooks/usePostAPI";
 import "../../styles/QuoteForm.css"
+import toast, {Toaster} from "react-hot-toast";
 
 
 const QuoteForm = () => {
@@ -13,16 +14,18 @@ const QuoteForm = () => {
 
     function submitFormHandler(event: React.FormEvent) {
         event.preventDefault();
-        const enteredAuthor: string | number = authorInputRef.current!.value.trim();
-        const enteredText: string | number = textInputRef.current!.value.trim();
+        let enteredAuthor: string | number = authorInputRef.current!.value;
+        let enteredText: string | number = textInputRef.current!.value;
 
         if (enteredAuthor && enteredText) {
-            dispatchPost(enteredText, enteredAuthor);
+            dispatchPost(enteredText.trim(), enteredAuthor.trim());
+            toast.success("Quote was added...");
         }
     }
 
     return (
         <Fragment>
+            <Toaster/>
             <Card>
                 <form
                     className={"form"}

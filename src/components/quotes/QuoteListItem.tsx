@@ -2,17 +2,19 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 import "../../styles/QuoteListItem.css";
+import Quote from "../../models/quote";
 
-const QuoteListItem: React.FC<{ id: number, text: string, author: string }> = (props) => {
+const QuoteListItem: React.FC<{ quoteItem: Quote }> = (props) => {
+    const quote = props.quoteItem;
 
     return (
         <li className="quoteClass">
-            <Link to={`${props.id}`}>
+            <Link to={`${quote.id}`}>
                 <div className={"quoteBlockClass"}>
-                    <blockquote>„ {props.text} ”</blockquote>
+                    <blockquote>„ {quote.text} ”</blockquote>
                 </div>
                 <div className={"authorBlockClass"}>
-                    <p>- {props.author}</p>
+                    <p>- {quote.author}</p>
                 </div>
 
             </Link>

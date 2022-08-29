@@ -10,7 +10,7 @@ const usePostAPI = () => {
 
     const dispatchPost = async (textQuote: string, textAuthor: string) => {
         setIsLoading(true);
-        const idGenerator = Math.random() * 20 + 1;
+        const idGenerator = Math.random() * 400 + 1;
         const quoteNew = new Quote(idGenerator, textQuote, textAuthor)
 
         try {
