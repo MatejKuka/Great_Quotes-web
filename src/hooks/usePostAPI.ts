@@ -1,11 +1,11 @@
 import {useState} from "react";
 import Quote from "../models/quote";
-
-const URL_DATABASE: string = "https://react-project-quotes-default-rtdb.europe-west1.firebasedatabase.app/quotes.json"
+import {URL_DATABASE} from "../configApiDatabase";
 
 const usePostAPI = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState<Boolean>(false);
+    const [error, setError] = useState<Error | null>();
+    const [data, setData] = useState<Quote | null>();
 
 
     const dispatchPost = async (textQuote: string, textAuthor: string) => {
@@ -14,7 +14,7 @@ const usePostAPI = () => {
         const quoteNew = new Quote(idGenerator, textQuote, textAuthor)
 
         try {
-            const response = await fetch(URL_DATABASE, {
+            const response = await fetch(URL_DATABASE + ".json", {
                 method: "POST",
                 body: JSON.stringify(quoteNew),
                 headers: {
@@ -24,16 +24,20 @@ const usePostAPI = () => {
             if (!response.ok) {
                 throw new Error('Something went wrong!');
             }
-            const data = await response.json();
-            console.log(data);
+            const dataNew = await response.json();
+            if (response.ok) {
+                setData(dataNew);
+                setError(null);
+            }
         } catch (error: Error | any) {
-            setError(error.message)
+            setError(error.message);
+            //setData(null);
         }
         setIsLoading(false);
         return quoteNew;
     }
 
-    return {isLoading, error, dispatchPost}
+    return {isLoading, error, data, dispatchPost}
 }
 
 export default usePostAPI;

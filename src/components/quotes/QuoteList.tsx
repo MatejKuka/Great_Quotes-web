@@ -5,6 +5,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import QuoteListItem from "./QuoteListItem";
 import QuoteContext from "../context/quote-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import toast, {Toaster} from "react-hot-toast";
 
 let isAscending: boolean | null = null;
 let isAuthorSort: boolean | null = null;
@@ -39,7 +40,7 @@ const QuoteList = () => {
             }
         }
         if (error) {
-
+            toast.error("Something went wrong!");
         }
     }, [items, error]);
 
@@ -68,6 +69,7 @@ const QuoteList = () => {
     }
     return (
         <Fragment>
+            <div><Toaster/></div>
             <div className="buttonSortClass">
                 <button
                     onClick={changeSortingTextHandler}>Sort {isAscending ? "Ascending" : "Descending"}</button>

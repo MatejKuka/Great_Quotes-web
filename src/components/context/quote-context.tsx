@@ -50,10 +50,6 @@ export const QuoteContextProvider: React.FC<props> = (props) => {
         }
     }
 
-    function logInConsole (){
-        return 5;
-    }
-
     const contextValue = {
         items,
         sortAscending,
@@ -61,16 +57,12 @@ export const QuoteContextProvider: React.FC<props> = (props) => {
         sortByAuthor,
         isLoading,
         error,
-        logInConsole,
     }
 
     return (
-        // @ts-ignore
         <QuoteContext.Provider value={contextValue}>
             {props.children}
             </QuoteContext.Provider>
     )
 }
 export default QuoteContext;
-
-//export const useQuoteContext = () => useContext(QuoteContext);

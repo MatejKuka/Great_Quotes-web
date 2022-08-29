@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import Quote from "../models/quote";
-import {URL_DATABASE} from "../configAPI";
+import {URL_DATABASE} from "../configApiDatabase";
 
 
 const useFetchAPI = () => {
