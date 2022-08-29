@@ -21,9 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/.idea/vcs.xml
-/.idea/.name
-/.idea/inspectionProfiles/
-/.idea/misc.xml
 
 ./src/configApiDatabase.js
+.idea/*
