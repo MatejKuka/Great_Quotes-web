@@ -17,22 +17,13 @@ const QuoteDetail = () => {
     const quote: Quote | undefined = quotes?.find((quote) => quote.id === Number(params.quoteId));
 
     if (!quote) {
-        return <p style={{fontSize:"3rem",textAlign:"center"}}>No quote found!</p>;
+        return <p style={{fontSize: "3rem", textAlign: "center"}}>No quote found!</p>;
     }
 
     return (
         <HighlightedQuote
             quote={quote}
         />
-)
-
+    )
 }
-//TODO Change the whole logic of Reducer in order to set all quotes globally
-
 export default QuoteDetail;
-
-/*
-const quotes: Quote[] = useSelector((state: RootState) => state.sortingItems.items);
-console.log(quotes);
-const quote: Quote | undefined = quotes.find((quote) => quote.id === Number(params.quoteId));
- */

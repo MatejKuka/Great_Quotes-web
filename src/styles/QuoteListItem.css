@@ -2,30 +2,58 @@
     margin: 1rem auto;
     border-radius: 1.2rem;
     background-color: #939F5C;
-    width: 40%;
+    width: clamp(8rem, 80%, 24rem);
     list-style: none;
-    height: 100%;
+    height: 10rem;
     box-shadow: #BBCE8A 3px 4px;
     cursor: pointer;
 }
 
 .quoteClass blockquote {
     color: azure;
-    font-size: 2.5vw;
+    font-size: 1.3rem;
     text-align: center;
     font-style: italic;
     font-weight: bold;
-    margin: 5%;
+    margin: 0;
 }
 
 .quoteClass p {
-    font-size: 2vw;
-    margin-left: 45%;
+    font-size: 1.1rem;
     font-weight: bolder;
-    margin-right: 5%;
     color: darkslategrey;
+    overflow: hidden;
+    margin-left: 2rem;
 }
 
 .quoteClass a{
     text-decoration: none;
+}
+
+.quoteBlockClass {
+    margin: 3% 7%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.authorBlockClass {
+    height: 35%;
+    margin: 3%;
+    text-align: center;
+}
+
+@media(max-width: 300px){
+    .quoteClass blockquote{
+        font-size: 1rem;
+    }
+    .quoteClass p {
+        font-size: 0.8rem;
+    }
+    .quoteClass {
+        width: 200px;
+        height: 100px;
+    }
 }
